@@ -1,0 +1,48 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:9011/eureka/
+server:
+    port: 9013
+spring:
+    application:
+        name: gateway
+    jackson:
+        serialization:
+            INDENT_OUTPUT: true
+
+# JWT
+jwt:
+    header: Authorization
+    secret: mySecret
+    expiration: 604800
+    tokenHead: "Bearer "
+    route:
+        authentication:
+            path: auth
+            refresh: refresh
+
+#除api-b之外全部忽略
+zuul:
+    ignoredServices: '*'
+    routes:
+        api-a:
+            path: /api-a/**
+            serviceId: dbsvr
+        api-b:
+            path: /api-b/**
+            serviceId: nodesvr
+        auth-center:
+              path: /login/**
+              url: http://127.0.0.1:9031/
+              sensitiveHeaders: Cookie,Set-Cookie
+              stripPrefix: false
+
+# Logging configuration
+logging:
+    level:
+        org.springframework:
+            data: DEBUG
+            security: DEBUG
+
+sit.security.jwt.secret: otherpeopledontknowit

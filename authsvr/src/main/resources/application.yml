@@ -1,0 +1,33 @@
+server:
+    port: 9031
+spring:
+    application:
+        name: authsvr
+    jackson:
+        serialization:
+            INDENT_OUTPUT: true
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:9011/eureka/
+# JWT
+jwt:
+    header: Authorization
+    secret: mySecret
+    expiration: 604800
+    tokenHead: "Bearer "
+    route:
+        authentication:
+            path: auth
+            refresh: refresh
+
+
+# Logging configuration
+logging:
+    level:
+        org.springframework:
+            data: DEBUG
+            security: DEBUG
+
+sit.security.jwt.secret: otherpeopledontknowit
