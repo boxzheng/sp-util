@@ -32,6 +32,10 @@ zuul:
         api-b:
             path: /api-b/**
             serviceId: nodesvr
+        proxywx:
+            path: /proxywx/**
+            url: http://117.78.41.5:8081/node/
+            stripPrefix: false
         auth-center:
               path: /login/**
               url: http://127.0.0.1:9031/
