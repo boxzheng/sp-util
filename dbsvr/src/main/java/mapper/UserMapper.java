@@ -3,8 +3,9 @@ package mapper;
 import com.sit.entity.User;
 import com.sit.entity.UserExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
     int countByExample(UserExample example);
 
